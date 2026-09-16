@@ -30,7 +30,7 @@ Choose Basic, Medium or Top-class, then adjust the inputs. Number inputs update 
 - `model.test.mjs`: energy and layout regression checks; run `node model.test.mjs`.
 - `QA_REPORT.md`: browser and verification record.
 
-To deploy later, serve the whole folder with the same relative paths on any static host. This task does not publish, initialise Git, create commits or push anywhere. There is no server-side code or secret configuration.
+The repository is ready for a static host such as GitHub Pages: serve the whole folder with the same relative paths. There is no server-side code or secret configuration.
 
 ## Network and privacy
 
