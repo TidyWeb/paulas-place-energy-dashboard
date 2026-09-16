@@ -1,0 +1,24 @@
+[
+  {
+    "id": "its-one",
+    "label": "ITS \u00b7 20 panels + one battery option",
+    "priceExVat": 5560,
+    "priceIncVat": 6672,
+    "batteryKwh": 16.08,
+    "panelCount": 20,
+    "supplier": "ITS Technologies",
+    "url": "https://www.itstechnologies.uk/products/complete-on-or-off-grid-sunsynk-8kw-kit-20-panel-8-9kw-solar-10-24kwh-battery-storage-with-choice-of-panels?variant=56403651330429",
+    "exportCapable": true
+  },
+  {
+    "id": "its-two",
+    "label": "ITS \u00b7 20 panels + two battery options",
+    "priceExVat": 7395,
+    "priceIncVat": 8874,
+    "batteryKwh": 32.16,
+    "panelCount": 20,
+    "supplier": "ITS Technologies",
+    "url": "https://www.itstechnologies.uk/products/complete-on-or-off-grid-sunsynk-8kw-kit-20-panel-8-9kw-solar-10-24kwh-battery-storage-with-choice-of-panels?variant=56403651363197",
+    "exportCapable": true
+  }
+]

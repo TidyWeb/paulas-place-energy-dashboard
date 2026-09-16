@@ -1,0 +1,74 @@
+[
+  {
+    "id": "54887873675646",
+    "label": "10kWh battery + 8kW inverter; no panels",
+    "priceIncVat": 3998.13,
+    "priceExVat": 3331.78,
+    "vatStatus": "VAT included; displayed default verified in browser, variant prices from supplier product data",
+    "batteryKwh": 10.08,
+    "panelCount": 0,
+    "pvKwp": 0,
+    "generator": false,
+    "url": "https://www.energian.co.uk/products/off-grid-hybrid-energy-storage-system-with-riio-sun-ii-8kw-inverter-10-15-20kwh-lifepo4-batteries-and-optional-9-3kw-solar-panels-and-8-8kw-generator?variant=54887873675646&currency=GBP&country=GB"
+  },
+  {
+    "id": "54887873708414",
+    "label": "10kWh battery + 8kW inverter + 20 × 450W panels",
+    "priceIncVat": 5786.16,
+    "priceExVat": null,
+    "vatStatus": "VAT included; displayed default verified in browser, variant prices from supplier product data",
+    "batteryKwh": 10.08,
+    "panelCount": 20,
+    "pvKwp": 9,
+    "generator": false,
+    "url": "https://www.energian.co.uk/products/off-grid-hybrid-energy-storage-system-with-riio-sun-ii-8kw-inverter-10-15-20kwh-lifepo4-batteries-and-optional-9-3kw-solar-panels-and-8-8kw-generator?variant=54887873708414&currency=GBP&country=GB"
+  },
+  {
+    "id": "54887873773950",
+    "label": "15kWh battery + 8kW inverter; no panels",
+    "priceIncVat": 4991.06,
+    "priceExVat": null,
+    "vatStatus": "VAT included; displayed default verified in browser, variant prices from supplier product data",
+    "batteryKwh": 15.12,
+    "panelCount": 0,
+    "pvKwp": 0,
+    "generator": false,
+    "url": "https://www.energian.co.uk/products/off-grid-hybrid-energy-storage-system-with-riio-sun-ii-8kw-inverter-10-15-20kwh-lifepo4-batteries-and-optional-9-3kw-solar-panels-and-8-8kw-generator?variant=54887873773950&currency=GBP&country=GB"
+  },
+  {
+    "id": "54887873806718",
+    "label": "15kWh battery + 8kW inverter + 20 × 450W panels",
+    "priceIncVat": 6779.09,
+    "priceExVat": null,
+    "vatStatus": "VAT included; displayed default verified in browser, variant prices from supplier product data",
+    "batteryKwh": 15.12,
+    "panelCount": 20,
+    "pvKwp": 9,
+    "generator": false,
+    "url": "https://www.energian.co.uk/products/off-grid-hybrid-energy-storage-system-with-riio-sun-ii-8kw-inverter-10-15-20kwh-lifepo4-batteries-and-optional-9-3kw-solar-panels-and-8-8kw-generator?variant=54887873806718&currency=GBP&country=GB"
+  },
+  {
+    "id": "54887941243262",
+    "label": "20kWh battery + 8kW inverter; no panels",
+    "priceIncVat": 6088.98,
+    "priceExVat": null,
+    "vatStatus": "VAT included; displayed default verified in browser, variant prices from supplier product data",
+    "batteryKwh": 20.16,
+    "panelCount": 0,
+    "pvKwp": 0,
+    "generator": false,
+    "url": "https://www.energian.co.uk/products/off-grid-hybrid-energy-storage-system-with-riio-sun-ii-8kw-inverter-10-15-20kwh-lifepo4-batteries-and-optional-9-3kw-solar-panels-and-8-8kw-generator?variant=54887941243262&currency=GBP&country=GB"
+  },
+  {
+    "id": "54887941276030",
+    "label": "20kWh battery + 8kW inverter + 20 × 450W panels",
+    "priceIncVat": 7872.01,
+    "priceExVat": null,
+    "vatStatus": "VAT included; displayed default verified in browser, variant prices from supplier product data",
+    "batteryKwh": 20.16,
+    "panelCount": 20,
+    "pvKwp": 9,
+    "generator": false,
+    "url": "https://www.energian.co.uk/products/off-grid-hybrid-energy-storage-system-with-riio-sun-ii-8kw-inverter-10-15-20kwh-lifepo4-batteries-and-optional-9-3kw-solar-panels-and-8-8kw-generator?variant=54887941276030&currency=GBP&country=GB"
+  }
+]

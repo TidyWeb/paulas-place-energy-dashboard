@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Warm Homes Nest",
+    "area": "Wales",
+    "support": "Recorded open: free tailored insulation, heating, heat pumps and solar for qualifying households.",
+    "status": "possible",
+    "url": "https://www.gov.wales/nest-warm-homes-programme",
+    "caveat": "Household eligibility unknown. Income, benefit/health, EPC and property checks apply. Battery support is unconfirmed.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Green Homes Wales",
+    "area": "Wales",
+    "support": "Recorded open subject to funding: funded assessment, £1,000–£25,000 interest-free loan and discretionary grant alongside the loan. Solar with battery is an eligible measure.",
+    "status": "possible",
+    "url": "https://developmentbank.wales/green-homes-wales",
+    "caveat": "Primary owner-occupied residence and affordability checks required. Loan is not a grant; no grant amount can be assumed before an individual offer. Listed/conservation restrictions apply.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "ECO4",
+    "area": "Great Britain",
+    "support": "Recorded open to 31 December 2026: supplier-funded insulation and heating; solar only under specific heating-system conditions.",
+    "status": "possible",
+    "url": "https://www.ofgem.gov.uk/environmental-and-social-schemes/energy-company-obligation-eco",
+    "caveat": "EPC D–G and household eligibility checks required. Supplier decides funding; no guaranteed award. Standalone battery support is not established.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Gwynedd ECO4 Flex",
+    "area": "Gwynedd",
+    "support": "Local ECO4 referral route for insulation/heating; reported gross-income route below £31,000 plus alternative qualifying routes.",
+    "status": "possible",
+    "url": "https://www.gwynedd.llyw.cymru/en-gb/housing/energy-advice/i-want-to-be-more-energy-efficient",
+    "caveat": "Household eligibility and current referral intake unconfirmed. Council referral does not guarantee supplier funding; do not add a separate Flex award to ECO4.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Boiler Upgrade Scheme",
+    "area": "England and Wales",
+    "support": "Recorded £7,500 for qualifying air-to-water/ground-source heat pumps; conditional £9,000 oil/LPG off-grid uplift from 21 July 2026 to 31 March 2027.",
+    "status": "possible",
+    "url": "https://www.ofgem.gov.uk/environmental-and-social-schemes/boiler-upgrade-scheme-bus/boiler-upgrade-scheme-bus-property-owners",
+    "caveat": "Eligibility and existing heating fuel unknown. Installer, replacement-system and technical conditions apply. Not a PV/battery grant. The report also lists £2,500 air-to-air and £5,000 qualifying biomass.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "0% VAT on energy-saving materials",
+    "area": "Great Britain",
+    "support": "Tax relief on qualifying installed PV, batteries, insulation, heat pumps and wind until 31 March 2027.",
+    "status": "possible",
+    "url": "https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086",
+    "caveat": "Tax relief, not a cash grant. Installer applies the correct rate. Do not deduct VAT again from a quote already using the zero rate.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Smart Export Guarantee",
+    "area": "Great Britain",
+    "support": "Ongoing supplier payments for eligible exported renewable electricity.",
+    "status": "possible",
+    "url": "https://www.ofgem.gov.uk/environmental-programmes/smart-export-guarantee-seg/electricity-suppliers",
+    "caveat": "Export revenue, not installation funding. Certification, metering and supplier terms apply. Do not add another SEG payment to Flux export revenue already counted.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Warm Homes: Local Grant",
+    "area": "England only",
+    "support": "Free energy-saving improvements for eligible private homes in England.",
+    "status": "not applicable",
+    "url": "https://www.gov.uk/apply-warm-homes-local-grant",
+    "caveat": "Not available in Wales; cannot support this Gwynedd property.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Warm Home Discount",
+    "area": "England and Wales",
+    "support": "Recorded reopening October 2026: £150 electricity-bill discount for qualifying households.",
+    "status": "unknown",
+    "url": "https://www.gov.uk/the-warm-home-discount-scheme",
+    "caveat": "Bill support only, not a retrofit capital grant. Household benefits and 2026–27 eligibility remain unconfirmed.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Leasing Scheme Wales — Gwynedd",
+    "area": "Gwynedd",
+    "support": "Up to £5,000 to improve energy rating within a qualifying 5–20-year council lease.",
+    "status": "unknown",
+    "url": "https://www.gwynedd.llyw.cymru/en-gb/housing/i-have-a-home/im-a-landlord/leasing-scheme-wales-gwynedd",
+    "caveat": "Conditional landlord route only. Not an ordinary owner-occupier/holiday-home grant; willingness and eligibility to lease to the council are unknown.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Gwynedd empty-home support",
+    "area": "Gwynedd",
+    "support": "Up to £25,000 to bring a qualifying empty home back into use and improve efficiency.",
+    "status": "unknown",
+    "url": "https://www.gwynedd.llyw.cymru/en-gb/housing/empty-homes",
+    "caveat": "Not a general retrofit grant. Empty/second-home history, local connection, Council Tax band A–D, income and mortgage conditions must be checked.",
+    "checked": "2026-09-16"
+  },
+  {
+    "name": "Menter Gwynedd: Decarbonisation Stream",
+    "area": "Gwynedd qualifying businesses",
+    "support": "Recorded 2026/27 EOI deadline: midnight 30 September 2026. £2,500–£12,000, up to 70% of eligible capital costs after business-support stage.",
+    "status": "unknown",
+    "url": "https://www.gwynedd.llyw.cymru/en-gb/businesses/finance-funding-and-grants/business-grants/business-support-programme/decarbonisation-programme",
+    "caveat": "Ordinary residential use excluded. Holiday accommodation needs qualifying commercial use and business conditions; reported letting tests are 252 available days and 182 let days. Property use is unknown.",
+    "checked": "2026-09-16"
+  }
+]

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183e3b"><meta name="description" content="A local solar, battery and heat-pump planning notebook for Paula's Place in Borth-y-Gest.">
+  <title>Paula’s Place · Energy notebook</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23183e3b'/%3E%3Ctext x='9' y='25' fill='%23fffef8' font-size='27' font-family='Georgia'%3EP%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/leaflet.js"></script><script type="module" src="app.js"></script>
+</head>
+<body>
+<div class="privacy-gate" id="privacy-gate" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="privacy-backdrop" aria-hidden="true"></div>
+  <div class="privacy-wash" aria-hidden="true"></div>
+  <section class="privacy-shell">
+    <div class="privacy-panel">
+      <p class="privacy-eyebrow">Paula’s Place · private notebook</p>
+      <h1 id="privacy-title">Energy planning notebook</h1>
+      <p class="privacy-intro">Enter the review password to open the dashboard.</p>
+      <form id="privacy-form">
+        <label for="privacy-password">Review password</label>
+        <div class="privacy-entry">
+          <input id="privacy-password" name="password" type="password" autocomplete="off" spellcheck="false" placeholder="Enter password" required>
+          <button type="submit">Open dashboard</button>
+        </div>
+        <p class="privacy-status" id="privacy-status" role="alert" aria-live="polite"></p>
+      </form>
+      <p class="privacy-note">This is a simple privacy gate for the planning notebook, not a high-security login.</p>
+    </div>
+  </section>
+</div>
+<div id="dashboard-app" data-locked="true" aria-hidden="true">
+<a class="skip" href="#main">Skip to the energy notebook</a>
+<header class="masthead"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">P<span>≈</span></span><span>Paula’s Place<small>BORTH-Y-GEST · NORTH WALES</small></span></a><nav aria-label="Notebook sections"><a href="#site">The site</a><a href="#energy">Energy</a><a href="#costs">Costs</a><a href="#next">Next steps</a></nav><button id="reset" class="quiet">Reset to defaults ↺</button></header>
+<main id="main">
+<section class="intro"><div><p class="eyebrow">A HOUSE BY THE SEA. A PLAN FOR ITS ENERGY.</p><h1>What could the sunshine do?</h1><p class="lede">Explore solar panels, battery storage and a possible heat pump for <strong>2 Mersey Street</strong>. Start with a tier, then change the assumptions together.</p></div><div class="edition"><span>FIELD NOTE / 01</span><strong>52.91556° N<br>4.13733° W</strong><small>Working front anchor · provisional<br>Planning notebook · September 2026</small></div></section>
+<div class="scope-note"><span class="dot"></span><p><strong>A comparison tool, with room for uncertainty.</strong> These are planning estimates, not an engineering design, planning approval, grant decision or quotation.</p></div>
+<div id="load-status" role="status">Loading the project’s hourly solar data…</div>
+<section class="scenario-section" aria-labelledby="scenario-heading"><div class="section-heading"><div><p class="eyebrow">01 / CHOOSE A STARTING POINT</p><h2 id="scenario-heading">Three ways to begin</h2></div><span class="source-tag">Assumed · editable presets</span></div><div class="tiers" id="tiers">
+<button data-tier="basic" aria-pressed="false"><span class="tier-number">01</span><span><strong>Basic</strong><small>Front roof · one battery</small></span><span class="tier-capacity" id="tier-basic"></span></button>
+<button data-tier="medium" aria-pressed="true"><span class="tier-number">02</span><span><strong>Medium</strong><small>Front + rear · one battery</small></span><span class="tier-capacity" id="tier-medium"></span></button>
+<button data-tier="top" aria-pressed="false"><span class="tier-number">03</span><span><strong>Top-class</strong><small>Front + rear · two batteries</small></span><span class="tier-capacity" id="tier-top"></span></button></div><p class="micro">Tiers set active roofs and battery size. The total DIY budget stays at your entered amount. Your roof geometry, tariff and household choices carry across. Top-class means more storage here; it is not a promise of greater savings.</p></section>
+<div class="workspace">
+<aside class="controls" aria-label="Scenario assumptions"><div class="controls-title"><span class="eyebrow">MAKE IT YOURS</span><h2>The assumptions</h2><p>Change a value to update the whole notebook.</p></div>
+<details open><summary>Roof & array <span>01</span></summary><div class="control-body"><p class="source-tag">Requires installer/site survey</p><p class="micro">Areas and rectangles are provisional. Panel fit uses both, with a 2 cm gap. Usable area allows for obstructions; it cannot locate them.</p><div id="surfaces"></div><div class="fields two"><label>Panel power<select data-path="panelWattage"><option value="450">450 W</option><option value="500">500 W</option></select></label><label>Panel length · m<input data-path="panelLengthM" type="number" min="0.5" max="4" step=".001"></label><label>Panel width · m<input data-path="panelWidthM" type="number" min="0.5" max="3" step=".001"></label></div><p class="micro">A 500 W panel at these dimensions is a scenario assumption. Confirm the exact module and mounting system.</p></div></details>
+<details open><summary>Battery & household <span>02</span></summary><div class="control-body"><p class="source-tag">Imported from project data · editable</p><label>Nominal storage<select data-path="batteryKwh"><option value="16.08">One battery · 16.08 kWh</option><option value="32.16">Two batteries · 32.16 kWh</option><option value="40">40 kWh scenario</option><option value="10.08">Energian bank · 10.08 kWh</option><option value="15.12">Energian bank · 15.12 kWh</option><option value="20.16">Energian bank · 20.16 kWh</option></select></label><label>Everyday electricity<select data-path="baseDailyKwh"><option value="5.6">Low · 5.6 kWh/day</option><option value="8">Medium · 8 kWh/day</option><option value="12">High · 12 kWh/day</option></select></label><label class="check"><input type="checkbox" data-path="ashpEnabled"> Add an air-to-water heat pump</label><label>Extra heat-pump electricity · kWh/year<input type="number" data-path="ashpAnnualKwh" min="0" max="30000" step="100"></label><p class="winter-note">Heat-pump demand is greatest in winter, when solar output is weakest. This is electricity input, not heat output.</p><label class="check"><input type="checkbox" data-path="gridCharge"> Cheap overnight grid charging</label><p class="micro">Uses the historical day ahead as a perfect forecast, like the original model. An optimistic control assumption; switch off to compare solar-only charging. No deliberate peak battery export.</p><details><summary>Battery & grid limits</summary><div class="fields two"><label>Usable window · %<input data-path="batteryUsablePct" type="number" min="1" max="100" step="1"></label><label>Reserve within window · kWh<input data-path="reserveKwh" type="number" min="0" max="40" step=".1"></label><label>Charge efficiency · fraction<input data-path="chargeEfficiency" type="number" min=".5" max="1" step=".01"></label><label>Discharge efficiency · fraction<input data-path="dischargeEfficiency" type="number" min=".5" max="1" step=".01"></label><label>Battery power limit · kW<input data-path="batteryPowerKw" type="number" min="0" max="30" step=".1"></label><label>PV inverter limit · kW<input data-path="inverterKw" type="number" min="0" max="30" step=".1"></label><label>Export limit · kW<input data-path="exportLimitKw" type="number" min="0" max="30" step=".01"></label></div><p class="micro">5 kW battery power and 8 kW PV inverter are assumptions. Export defaults to 3.68 kW for screening; no DNO permission is implied. Equipment compatibility and shared inverter constraints need an installer.</p></details></div></details>
+<details><summary>Flux tariff <span>03</span></summary><div class="control-body"><p class="source-tag">Imported from project data · editable</p><p>15 September 2026 planning snapshot. Variable prices, not a future offer. Periods use UK local time, including daylight saving.</p><div id="tariff-fields" class="fields two"></div><p class="micro">Cheap 02:00–05:00 · peak 16:00–19:00 · normal at other times. <a href="https://octopus.energy/smart/flux/" target="_blank" rel="noreferrer">Official Flux information ↗</a></p></div></details>
+</aside>
+<div class="results">
+<section id="site" class="paper map-paper"><div class="section-heading"><div><p class="eyebrow">02 / START WITH THE PLACE</p><h2>A small site. Several possibilities.</h2></div><button id="recenter-map" class="quiet">Centre on the house</button></div><div class="map-wrap"><div id="site-map" aria-label="Interactive map of provisional front and rear anchors"></div></div><div class="map-caption"><span><b>A</b> Front / property anchor</span><span><b>B</b> Rear / outbuildings</span><span><b>┄</b> ~21 m northwest</span></div><p id="map-status" class="micro"></p><div class="sun-strip"><div><strong>Follow the sun</strong><small>Approximate position · measured/derived calculation</small></div><label>Date<input id="sun-date" type="date" value="2026-09-16" min="2020-01-01" max="2035-12-31"></label><label>Time · UTC<input id="sun-time" type="time" value="12:00"></label><output id="sun-readout"></output></div><p class="micro">The time is explicitly UTC (add one hour for British Summer Time). This changes the sun overlay only, not the historical annual generation model. A/B are working anchors, not confirmed building corners or ownership boundaries. LiDAR ground screening: A ~9.56 m, B ~7.28 m; not roof heights or a boundary survey.</p></section>
+<section id="energy"><div class="section-heading"><div><p class="eyebrow">03 / YOUR CURRENT SCENARIO</p><h2>The annual energy picture</h2></div><span class="source-tag">Measured/derived · scenario model</span></div><div id="warnings" role="status"></div><div id="metrics" class="metrics" aria-live="polite" aria-atomic="true"></div><div class="paper chart-paper"><div class="section-heading"><div><h3>Summer surplus, winter shortfall</h3><p>Average monthly electricity · kWh</p></div><div class="legend"><span><i class="solar"></i>Solar</span><span><i class="demand"></i>Household + heat pump</span></div></div><div id="monthly-chart"></div><p class="micro">Imported PVGIS 2021–2023 hourly data, adjusted by provisional roof assumptions. The three years show weather variation, not a forecast confidence interval. Roof shading and survey uncertainty can be larger.</p><details><summary>Read the monthly figures</summary><div class="table-scroll"><table><caption>Average per calendar month, with generation range across the three years</caption><thead><tr><th>Month</th><th>Solar kWh</th><th>Year range</th><th>Use kWh</th><th>Import kWh</th><th>Export kWh</th></tr></thead><tbody id="monthly-table"></tbody></table></div></details></div><div class="paper"><h3>From roof to socket</h3><div id="energy-details" class="detail-grid"></div><p class="micro">Self-consumption is solar retained on site, including battery losses; it is not the share of household demand met by solar. Battery discharge may include cheap grid electricity. Generation is potential output before the additional inverter and export limits; clipped and curtailed solar is reported separately.</p></div><div class="paper"><div class="section-heading"><h3>Will the panels fit?</h3><span class="source-tag">Requires installer/site survey</span></div><div id="layout-results"></div></div></section>
+<section id="costs"><div class="section-heading"><div><p class="eyebrow">04 / YOUR DIY BUDGET</p><h2>About £5,000, all in.</h2></div></div><div class="paper"><p class="source-tag">Assumed · Phil’s estimate · editable</p><p>You are selecting the components and fitting the system yourselves. This is your total DIY capital estimate, including your chosen components and fitting costs.</p><label>Total DIY capital outlay · £<input id="diy-total" type="number" min="0" max="200000" step="100" value="5000"></label><p class="micro">One all-in figure. No contractor installation allowances or example-kit prices are added to it. Adjust the total if your chosen specification changes. Any heat-pump capital cost is included only if you allow for it in this total.</p><div id="cost-inputs" hidden></div><label class="check"><input id="grant-enabled" type="checkbox"> Include a possible grant — possible, not confirmed</label><label class="grant-amount">Possible contribution · £<input id="grant-amount" type="number" value="0" min="0" max="100000" step="100" disabled></label><p class="micro">No grant is deducted by default. Enter only the contribution for the measures you are considering; confirm eligibility and avoid combining incompatible awards.</p><div id="finance" class="finance-grid"></div><p class="micro">Simple payback compares your DIY budget with avoided electricity costs and export income, using the same household demand on Flux without PV/storage as the baseline. It excludes finance, maintenance, replacements, degradation and gas savings. With a heat pump on, this is <strong>not whole-heating-system payback</strong>: avoided fuel bills and a heat-loss assessment are missing.</p></div><div class="paper"><h3>Keep the three options side by side</h3><p class="micro">Same current geometry, tariff and demand. The £5,000 starting budget applies to all tiers as a comparison assumption; it is not a separate component quotation for each tier. Edit the total to test another budget.</p><div class="table-scroll"><table><caption>Measured/derived scenario comparison · annual means</caption><thead><tr><th>Starting point</th><th>PV kWp</th><th>Storage kWh</th><th>Solar kWh</th><th>Bill incl. standing</th><th>DIY capital</th><th>Payback range</th></tr></thead><tbody id="comparison"></tbody></table></div></div></section>
+<section id="funding" class="paper"><div class="section-heading"><div><p class="eyebrow">05 / POSSIBLE HELP</p><h2>Funding starts with eligibility</h2></div><span class="source-tag">Imported from project data</span></div><p>No household award is confirmed. These cards reproduce the project research checked on <strong>16 September 2026</strong>; they are not a live funding check. Recheck the official scheme before applying. DIY fitting does not establish scheme or export-tariff eligibility. The installed-work VAT relief below does not apply automatically to retail equipment purchases; <a href="https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086" target="_blank" rel="noreferrer">HMRC says supply-only sales are standard-rated</a>.</p><div id="grants" class="grants"></div></section>
+<section id="next" class="paper next-paper"><p class="eyebrow">06 / TAKE THIS TO THE NEXT CONVERSATION</p><h2>What we still need to measure</h2><p>A few good measurements are more valuable than another decimal place.</p><p class="source-tag">Requires installer/site survey</p><ul class="checklist"><li>Actual roof width and slope length</li><li>Roof pitch</li><li>Chimney, skylight and edge setbacks</li><li>Structural suitability</li><li>Shading and horizon survey</li><li>Outbuilding dimensions</li><li>ASHP heat-loss calculation</li><li>Installer quotations</li><li>Confirmed grant eligibility</li><li>DNO export limit</li></ul></section>
+<details class="paper wind-panel"><summary>Optional wind screening <span>Not included in the totals</span></summary><p class="source-tag">Imported from project data · requires installer/site survey</p><p>The NASA regional 10 m wind series averages about 6.27 m/s. It does not tell us the wind at this roof, turbulence or turbine output. The project has no site-specific turbine power curve. Winter wind may complement solar, but a rooftop installation needs planning, structure, noise and maintenance assessment.</p><p><a href="https://www.gov.wales/planning-permission-wind-turbines" target="_blank" rel="noreferrer">Welsh Government planning guidance ↗</a></p></details>
+<details class="paper"><summary>Where the numbers come from</summary><p>Solar generation uses the saved PVGIS 1 kWp hourly profile for 2021–2023. It was downloaded at an older postcode point, with an optimum south-facing array. The front roof’s provisional southeast aspect is a screening adjustment, not a fresh PVGIS roof simulation.</p><p>“Measured/derived” here means calculated, not measured at the property. Inputs marked “Imported from project data” can themselves be modelled data or earlier assumptions. Costs are editable placeholders. No carbon figure is shown because no agreed emissions factor or counterfactual has been supplied.</p><p><a href="DATA_PROVENANCE.md">Data provenance & assumptions</a> · <a href="SOURCE_RECONCILIATION.md">Conflicts reconciled</a> · <a href="README.md">Run the notebook</a></p></details>
+</div></div>
+</main><footer><span>Paula’s Place <i>≈</i> Borth-y-Gest</span><span>Built for a conversation, before a commitment.</span></footer>
+</div>
+<script>
+  (() => {
+    const password = 'blaze1875';
+    const gate = document.getElementById('privacy-gate');
+    const dashboard = document.getElementById('dashboard-app');
+    const form = document.getElementById('privacy-form');
+    const field = document.getElementById('privacy-password');
+    const status = document.getElementById('privacy-status');
+    const storageKey = 'paulas-place-dashboard-unlocked';
+
+    function unlock() {
+      gate.hidden = true;
+      dashboard.dataset.locked = 'false';
+      dashboard.setAttribute('aria-hidden', 'false');
+      sessionStorage.setItem(storageKey, 'yes');
+      dashboard.querySelector('.brand')?.focus();
+      window.dispatchEvent(new Event('resize'));
+    }
+
+    if (sessionStorage.getItem(storageKey) === 'yes') unlock();
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (field.value === password) {
+        status.textContent = '';
+        unlock();
+        return;
+      }
+      status.textContent = 'That password does not match.';
+      field.select();
+      gate.classList.remove('privacy-shake');
+      void gate.offsetWidth;
+      gate.classList.add('privacy-shake');
+    });
+  })();
+</script>
+</body></html>
