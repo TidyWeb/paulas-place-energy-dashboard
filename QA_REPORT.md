@@ -10,4 +10,6 @@ Review gate addition: Paula’s Place palette, supplied Borth-y-Gest background 
 
 Dashboard switcher addition: the protected entry screen now reveals Complex dashboard and Simple dashboard choices after the shared password is accepted. The simple view is published at `/simple/`; both views carry a link to the other. Local HTTP preview checked the password failure state, successful choice reveal, simple-route navigation, reverse navigation to the complex view, simple-view data loading and no console errors.
 
+Gate visual correction: the alternate `borthygest.jpg` coastal photograph is now used behind both gates. The blur is reduced to a soft 9 px treatment and the cream wash is lighter so the coastline remains recognisable. Both dashboards now include a Back to sign-in control that clears the session; local preview and route navigation were rechecked.
+
 The combined publication bundle is prepared for GitHub Pages from the repository root. Source research files preserved. The dashboard is a provisional scenario tool, with the modelling limitations documented in DATA_PROVENANCE.md.

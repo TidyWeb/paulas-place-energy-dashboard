@@ -16,7 +16,7 @@ Then open http://127.0.0.1:8766/
 - `index.html`, `styles.css`, `app.js` — the interface.
 - `model.js` — copy of `../dashboard/model.js` plus one addition: `peakExport` (default `false`). When it's on, the battery sells to the grid in the Flux 16:00–19:00 window, keeping enough charge (perfect forecast) to run the house until 02:00. Overnight grid charging then fills the battery, leaving room for the next day's forecast solar surplus. New outputs are `peakExportKwh` and `peakExportRevenue`. With `peakExport` off, results are identical to the original, and `../dashboard/model.test.mjs` passes against this copy.
 - `data/solar-profile.json` — copy of `../dashboard/data/solar-profile.json`.
-- `assets/borth-y-gest-gate.png` — the supplied coastal image used by the review gate.
+- `assets/borthygest-gate.jpg` — the supplied coastal image used by the review gate.
 
 Don't copy `../dashboard/model.js` over this one: that would remove peak export. Port any engine changes by hand.
 
@@ -33,4 +33,4 @@ Don't copy `../dashboard/model.js` over this one: that would remove peak export.
 
 "Bill" includes the standing charge. "Save" = the same house on Flux with no panels, minus the new bill. Payback = budget ÷ yearly saving.
 
-The hosted version places this dashboard at `/simple/` beside the complex dashboard. Both routes use the same simple client-side review-password gate and link to each other. The gate is a privacy screen, not high-security authentication.
+The hosted version places this dashboard at `/simple/` beside the complex dashboard. Both routes use the same simple client-side review-password gate and link to each other. Use Back to sign-in on the dashboard to clear the current browser session. The gate is a privacy screen, not high-security authentication.

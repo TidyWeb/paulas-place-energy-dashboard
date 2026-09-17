@@ -46,7 +46,7 @@
 </div>
 <div id="dashboard-app" data-locked="true" aria-hidden="true">
 <a class="skip" href="#main">Skip to the energy notebook</a>
-<header class="masthead"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">P<span>≈</span></span><span>Paula’s Place<small>BORTH-Y-GEST · NORTH WALES</small></span></a><nav aria-label="Notebook sections"><a href="#site">The site</a><a href="#energy">Energy</a><a href="#costs">Costs</a><a href="#next">Next steps</a><a class="view-switch" href="simple/">Simple view ↗</a></nav><button id="reset" class="quiet">Reset to defaults ↺</button></header>
+<header class="masthead"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">P<span>≈</span></span><span>Paula’s Place<small>BORTH-Y-GEST · NORTH WALES</small></span></a><nav aria-label="Notebook sections"><a href="#site">The site</a><a href="#energy">Energy</a><a href="#costs">Costs</a><a href="#next">Next steps</a><a class="view-switch" href="simple/">Simple view ↗</a></nav><div class="masthead-actions"><button type="button" class="quiet signout" data-signout>Back to sign-in</button><button id="reset" class="quiet">Reset to defaults ↺</button></div></header>
 <main id="main">
 <section class="intro"><div><p class="eyebrow">A HOUSE BY THE SEA. A PLAN FOR ITS ENERGY.</p><h1>What could the sunshine do?</h1><p class="lede">Explore solar panels, battery storage and a possible heat pump for <strong>2 Mersey Street</strong>. Start with a tier, then change the assumptions together.</p></div><div class="edition"><span>FIELD NOTE / 01</span><strong>52.91556° N<br>4.13733° W</strong><small>Working front anchor · provisional<br>Planning notebook · September 2026</small></div></section>
 <div class="scope-note"><span class="dot"></span><p><strong>A comparison tool, with room for uncertainty.</strong> These are planning estimates, not an engineering design, planning approval, grant decision or quotation.</p></div>
@@ -81,6 +81,7 @@
     const field = document.getElementById('privacy-password');
     const status = document.getElementById('privacy-status');
     const choices = [...document.querySelectorAll('[data-dashboard-route]')];
+    const signoutButtons = [...document.querySelectorAll('[data-signout]')];
     const storageKey = 'paulas-place-dashboard-unlocked';
 
     function unlock() {
@@ -128,6 +129,11 @@
         event.preventDefault();
         unlock();
       }
+    }));
+
+    signoutButtons.forEach(button => button.addEventListener('click', () => {
+      sessionStorage.removeItem(storageKey);
+      window.location.reload();
     }));
   })();
 </script>

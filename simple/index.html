@@ -52,6 +52,7 @@
   </div>
   <div class="top-actions">
     <a class="view-switch" href="../">Full view ↗</a>
+    <button type="button" class="reset signout" data-signout>Back to sign-in</button>
     <button id="reset" class="reset">Start again</button>
   </div>
 </header>
@@ -165,6 +166,7 @@
     const field = document.getElementById('privacy-password');
     const status = document.getElementById('privacy-status');
     const choices = [...document.querySelectorAll('[data-dashboard-route]')];
+    const signoutButtons = [...document.querySelectorAll('[data-signout]')];
     const storageKey = 'paulas-place-dashboard-unlocked';
 
     function unlock() {
@@ -210,6 +212,11 @@
         event.preventDefault();
         unlock();
       }
+    }));
+
+    signoutButtons.forEach(button => button.addEventListener('click', () => {
+      sessionStorage.removeItem(storageKey);
+      window.location.reload();
     }));
   })();
 </script>

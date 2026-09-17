@@ -141,8 +141,8 @@ main {
 /* Private review gate: the same Paula’s Place route selector, in this view’s palette. */
 .privacy-gate { position: fixed; inset: 0; z-index: 5000; overflow: auto; color: var(--ink); background: var(--sand); }
 .privacy-backdrop, .privacy-wash { position: fixed; inset: 0; pointer-events: none; }
-.privacy-backdrop { z-index: -2; background: url('assets/borth-y-gest-gate.png') center/cover no-repeat; filter: blur(18px) saturate(1.18) contrast(1.06) brightness(.92); transform: scale(1.08); }
-.privacy-wash { z-index: -1; background: linear-gradient(115deg, rgba(246,239,226,.9) 0%, rgba(246,239,226,.68) 44%, rgba(246,239,226,.8) 100%), radial-gradient(circle at 50% 44%, rgba(31,95,99,.15), transparent 38%); }
+.privacy-backdrop { z-index: -2; background: url('assets/borthygest-gate.jpg') center/cover no-repeat; filter: blur(9px) saturate(1.12) contrast(1.08) brightness(.98); transform: scale(1.03); }
+.privacy-wash { z-index: -1; background: linear-gradient(115deg, rgba(246,239,226,.46) 0%, rgba(246,239,226,.2) 44%, rgba(246,239,226,.34) 100%), radial-gradient(circle at 50% 44%, rgba(31,95,99,.08), transparent 38%); }
 .privacy-shell { width: min(1080px, calc(100% - 32px)); min-height: 100svh; margin: 0 auto; display: grid; place-items: center; padding: 32px 0; }
 .privacy-panel { width: min(620px, 100%); padding: clamp(28px, 5vw, 48px); background: rgba(255,253,248,.92); border: 1px solid rgba(20,63,66,.28); box-shadow: 0 24px 80px rgba(20,63,66,.24); backdrop-filter: blur(10px); border-radius: var(--radius); }
 .privacy-eyebrow { margin: 0 0 12px; color: var(--sun-dark); font-size: 11px; line-height: 1.2; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
