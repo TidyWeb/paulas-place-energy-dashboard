@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paula’s Place · Sun & savings</title>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<div class="privacy-gate" id="privacy-gate" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="privacy-backdrop" aria-hidden="true"></div>
+  <div class="privacy-wash" aria-hidden="true"></div>
+  <section class="privacy-shell">
+    <div class="privacy-panel">
+      <p class="privacy-eyebrow">Paula’s Place · private notebook</p>
+      <h1 id="privacy-title">Energy planning notebook</h1>
+      <p class="privacy-intro">Enter the review password, then choose the dashboard that suits the conversation.</p>
+      <form id="privacy-form">
+        <label for="privacy-password">Review password</label>
+        <div class="privacy-entry">
+          <input id="privacy-password" name="password" type="password" autocomplete="off" spellcheck="false" placeholder="Enter password" required>
+          <button type="submit">Unlock choices</button>
+        </div>
+        <p class="privacy-status" id="privacy-status" role="alert" aria-live="polite"></p>
+      </form>
+      <div class="privacy-choice" aria-labelledby="privacy-choice-title">
+        <p class="privacy-choice-label" id="privacy-choice-title">Choose your view</p>
+        <p class="privacy-choice-help">Both views use the same planning data; choose the amount of detail you want.</p>
+        <div class="privacy-choice-links">
+          <a class="privacy-choice-link" href="../" data-dashboard-route="complex" aria-disabled="true" tabindex="-1">
+            <span class="privacy-choice-kicker">FULL VIEW</span>
+            <strong>Complex dashboard</strong>
+            <span>Maps, assumptions, funding and detailed comparisons.</span>
+          </a>
+          <a class="privacy-choice-link" href="./" data-dashboard-route="simple" aria-disabled="true" tabindex="-1">
+            <span class="privacy-choice-kicker">QUICK VIEW</span>
+            <strong>Simple dashboard</strong>
+            <span>Big choices and the main numbers, in one calm screen.</span>
+          </a>
+        </div>
+      </div>
+      <p class="privacy-note">This is a simple privacy gate for the planning notebook, not a high-security login.</p>
+    </div>
+  </section>
+</div>
+<div id="dashboard-app" data-locked="true" aria-hidden="true">
+<header class="top">
+  <div>
+    <h1>Paula’s Place</h1>
+    <p>Tap the blocks. Watch the numbers change.</p>
+  </div>
+  <div class="top-actions">
+    <a class="view-switch" href="../">Full view ↗</a>
+    <button id="reset" class="reset">Start again</button>
+  </div>
+</header>
+
+<main>
+  <section class="choices" aria-label="Choices">
+    <div class="group" data-key="panels">
+      <h2><span class="num">1</span> Solar panels</h2>
+      <div class="tiles">
+        <button data-value="6"><b>6</b><small>Front roof only</small></button>
+        <button data-value="10"><b>10</b><small>+ back</small></button>
+        <button data-value="16"><b>16</b><small>+ back / ground</small></button>
+        <button data-value="20"><b>20</b><small>+ back / ground</small></button>
+      </div>
+      <div class="stepper">
+        <button id="pan-down" aria-label="One fewer panel">−</button>
+        <output id="r-panels">10 panels</output>
+        <button id="pan-up" aria-label="One more panel">+</button>
+        <small id="r-kwp"></small>
+      </div>
+    </div>
+    <div class="group" data-key="battery">
+      <h2><span class="num">2</span> Battery</h2>
+      <div class="tiles">
+        <button data-value="0"><b>None</b><small>Panels only</small></button>
+        <button data-value="16.08"><b>One</b><small>16 kWh</small></button>
+        <button data-value="32.16"><b>Two</b><small>32 kWh</small></button>
+      </div>
+    </div>
+    <div class="group" data-key="usage">
+      <h2><span class="num">3</span> How much power the house uses</h2>
+      <div class="tiles">
+        <button data-value="5.6"><b>Light</b><small>5.6 kWh a day</small></button>
+        <button data-value="8"><b>Normal</b><small>8 kWh a day</small></button>
+        <button data-value="12"><b>Heavy</b><small>12 kWh a day</small></button>
+      </div>
+    </div>
+    <div class="group" data-key="heat">
+      <h2><span class="num">4</span> Heat pump</h2>
+      <div class="tiles">
+        <button data-value="off"><b>No</b><small>Keep current heating</small></button>
+        <button data-value="on"><b>Yes</b><small>Adds ~3,000 kWh a year</small></button>
+      </div>
+    </div>
+    <div class="group" data-key="night">
+      <h2><span class="num">5</span> Fill battery with cheap night power</h2>
+      <div class="tiles">
+        <button data-value="off"><b>No</b><small>Sun only</small></button>
+        <button data-value="on"><b>Yes</b><small>2am–5am cheap rate</small></button>
+      </div>
+    </div>
+    <div class="group" data-key="peak">
+      <h2><span class="num">6</span> Sell stored power at the evening peak</h2>
+      <div class="tiles">
+        <button data-value="off"><b>No</b><small>Battery just runs the house</small></button>
+        <button data-value="on"><b>Yes</b><small>4pm–7pm top export rate</small></button>
+      </div>
+    </div>
+    <div class="group" data-key="exportKw">
+      <h2><span class="num">7</span> How much can be sent to the grid at once</h2>
+      <div class="tiles">
+        <button data-value="3.68"><b>3.68 kW</b><small>Standard, no approval</small></button>
+        <button data-value="8"><b>8 kW</b><small>Needs network approval</small></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="results" aria-live="polite">
+    <div class="card bill"><span id="r-bill-label">Electricity bill per year</span><strong id="r-bill">–</strong><small id="r-bill-was">–</small></div>
+    <div class="card save"><span>You save per year</span><strong id="r-save">–</strong><small id="r-export">–</small></div>
+    <div class="card sun"><span>Power from the sun</span><strong id="r-sun">–</strong><div class="meter"><i id="r-sun-bar"></i></div></div>
+    <div class="card pay"><span>Pays for itself in</span><strong id="r-pay">–</strong>
+      <div class="budget"><button id="bud-down" aria-label="Lower budget">−</button><output id="r-budget">£5,000</output><button id="bud-up" aria-label="Raise budget">+</button></div>
+      <small>Your all-in spend</small>
+    </div>
+    <div class="card months">
+      <div class="months-head"><span>Month by month</span>
+        <span class="key"><i class="k-sun"></i>Sun makes <i class="k-use"></i>House uses</span></div>
+      <div id="chart" class="chart"></div>
+    </div>
+    <p id="tip" class="tip"></p>
+  </section>
+
+  <details class="more">
+    <summary>Fine-tune & small print</summary>
+    <div class="more-body">
+      <label>Panel size <select id="f-watt"><option value="450">450 W</option><option value="500">500 W</option></select></label>
+      <label>Budget £ <input id="f-budget" type="number" min="0" step="100"></label>
+      <label>Heat pump electricity, kWh a year <input id="f-ashp" type="number" min="0" step="100"></label>
+      <ul>
+        <li>Built from 2021–2023 hourly solar data (PVGIS) and Octopus Flux prices from 15 September 2026. Prices change.</li>
+        <li>The front roof fits about 6 panels (size guessed from the sale listing). Any more go on the back / ground area, which is treated as big enough. Nobody has measured it yet, and there's no shading survey.</li>
+        <li>With the standard 3.68 kW export limit, sunny-day power that the house and battery can’t take is wasted. From about 14 panels upwards, that loss grows quickly: roughly 665 kWh a year at 20 panels. The 8 kW inverter itself only starts capping output beyond about 24 panels.</li>
+        <li>Bills include the 68p/day standing charge. Savings compare the same house on Flux with no panels.</li>
+        <li>Night charging and peak selling assume the system knows tomorrow’s weather perfectly, so they’re on the hopeful side.</li>
+        <li>Peak selling keeps enough in the battery to run the house until 2am. Selling is capped by block 7: about 11 kWh over the 3 hours at 3.68 kW. At 8 kW, the battery’s assumed 5 kW output becomes the cap, at about 15 kWh.</li>
+        <li>Heat pump savings on gas aren’t counted. Payback ignores repairs, finance and panel ageing.</li>
+        <li>A planning guide, not a quote or an engineering design.</li>
+      </ul>
+    </div>
+  </details>
+</main>
+<p id="status" class="status">Loading solar data…</p>
+</div>
+<script>
+  (() => {
+    const password = 'bemygirlxx';
+    const gate = document.getElementById('privacy-gate');
+    const dashboard = document.getElementById('dashboard-app');
+    const form = document.getElementById('privacy-form');
+    const field = document.getElementById('privacy-password');
+    const status = document.getElementById('privacy-status');
+    const choices = [...document.querySelectorAll('[data-dashboard-route]')];
+    const storageKey = 'paulas-place-dashboard-unlocked';
+
+    function unlock() {
+      gate.hidden = true;
+      dashboard.dataset.locked = 'false';
+      dashboard.setAttribute('aria-hidden', 'false');
+      sessionStorage.setItem(storageKey, 'yes');
+    }
+
+    function enableChoices() {
+      sessionStorage.setItem(storageKey, 'yes');
+      gate.classList.add('privacy-authenticated');
+      status.textContent = 'Password accepted. Choose a dashboard.';
+      choices.forEach(link => {
+        link.removeAttribute('aria-disabled');
+        link.removeAttribute('tabindex');
+        link.classList.add('is-ready');
+      });
+      choices[0]?.focus();
+    }
+
+    if (sessionStorage.getItem(storageKey) === 'yes') unlock();
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (field.value === password) {
+        enableChoices();
+        return;
+      }
+      status.textContent = 'That password does not match.';
+      field.select();
+      gate.classList.remove('privacy-shake');
+      void gate.offsetWidth;
+      gate.classList.add('privacy-shake');
+    });
+
+    choices.forEach(link => link.addEventListener('click', event => {
+      if (link.getAttribute('aria-disabled') === 'true') {
+        event.preventDefault();
+        return;
+      }
+      if (link.dataset.dashboardRoute === 'simple') {
+        event.preventDefault();
+        unlock();
+      }
+    }));
+  })();
+</script>
+</body>
+</html>

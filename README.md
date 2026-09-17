@@ -2,7 +2,7 @@
 
 A static, responsive dashboard for comparing provisional solar, battery and air-to-water heat-pump scenarios. No build step, account, API key or publication is needed.
 
-The entry page has a simple client-side review-password gate, matching the Paula’s Place palette and using the supplied Borth-y-Gest image as a blurred background. It is a privacy screen, not high-security authentication; the dashboard unlock lasts for the current browser session.
+The entry page has a simple client-side review-password gate, matching the Paula’s Place palette and using the supplied Borth-y-Gest image as a blurred background. After unlocking, choose the complex dashboard or the simpler `/simple/` view. Both routes link to each other. This is a privacy screen, not high-security authentication; the dashboard unlock lasts for the current browser session.
 
 ## Run locally
 
@@ -20,6 +20,7 @@ Choose Basic, Medium or Top-class, then adjust the inputs. Number inputs update 
 
 - `index.html`, `styles.css`, `app.js`: password gate, interface and financial sensitivity calculations.
 - `assets/borth-y-gest-gate.png`: supplied coastal image used by the review gate.
+- `simple/`: the companion big-block dashboard, with its own protected entry point.
 - `model.js`: panel fit and hourly electricity/storage dispatch.
 - `map.js`: interactive map and approximate sun geometry.
 - `data/solar-profile.json`: compact copy of the saved PVGIS hourly output.

@@ -15,22 +15,38 @@
     <div class="privacy-panel">
       <p class="privacy-eyebrow">Paula’s Place · private notebook</p>
       <h1 id="privacy-title">Energy planning notebook</h1>
-      <p class="privacy-intro">Enter the review password to open the dashboard.</p>
+      <p class="privacy-intro">Enter the review password, then choose the dashboard that suits the conversation.</p>
       <form id="privacy-form">
         <label for="privacy-password">Review password</label>
         <div class="privacy-entry">
           <input id="privacy-password" name="password" type="password" autocomplete="off" spellcheck="false" placeholder="Enter password" required>
-          <button type="submit">Open dashboard</button>
+          <button type="submit">Unlock choices</button>
         </div>
         <p class="privacy-status" id="privacy-status" role="alert" aria-live="polite"></p>
       </form>
+      <div class="privacy-choice" aria-labelledby="privacy-choice-title">
+        <p class="privacy-choice-label" id="privacy-choice-title">Choose your view</p>
+        <p class="privacy-choice-help">Both views use the same planning data; choose the amount of detail you want.</p>
+        <div class="privacy-choice-links">
+          <a class="privacy-choice-link" href="./" data-dashboard-route="complex" aria-disabled="true" tabindex="-1">
+            <span class="privacy-choice-kicker">FULL VIEW</span>
+            <strong>Complex dashboard</strong>
+            <span>Maps, assumptions, funding and detailed comparisons.</span>
+          </a>
+          <a class="privacy-choice-link" href="simple/" data-dashboard-route="simple" aria-disabled="true" tabindex="-1">
+            <span class="privacy-choice-kicker">QUICK VIEW</span>
+            <strong>Simple dashboard</strong>
+            <span>Big choices and the main numbers, in one calm screen.</span>
+          </a>
+        </div>
+      </div>
       <p class="privacy-note">This is a simple privacy gate for the planning notebook, not a high-security login.</p>
     </div>
   </section>
 </div>
 <div id="dashboard-app" data-locked="true" aria-hidden="true">
 <a class="skip" href="#main">Skip to the energy notebook</a>
-<header class="masthead"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">P<span>≈</span></span><span>Paula’s Place<small>BORTH-Y-GEST · NORTH WALES</small></span></a><nav aria-label="Notebook sections"><a href="#site">The site</a><a href="#energy">Energy</a><a href="#costs">Costs</a><a href="#next">Next steps</a></nav><button id="reset" class="quiet">Reset to defaults ↺</button></header>
+<header class="masthead"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">P<span>≈</span></span><span>Paula’s Place<small>BORTH-Y-GEST · NORTH WALES</small></span></a><nav aria-label="Notebook sections"><a href="#site">The site</a><a href="#energy">Energy</a><a href="#costs">Costs</a><a href="#next">Next steps</a><a class="view-switch" href="simple/">Simple view ↗</a></nav><button id="reset" class="quiet">Reset to defaults ↺</button></header>
 <main id="main">
 <section class="intro"><div><p class="eyebrow">A HOUSE BY THE SEA. A PLAN FOR ITS ENERGY.</p><h1>What could the sunshine do?</h1><p class="lede">Explore solar panels, battery storage and a possible heat pump for <strong>2 Mersey Street</strong>. Start with a tier, then change the assumptions together.</p></div><div class="edition"><span>FIELD NOTE / 01</span><strong>52.91556° N<br>4.13733° W</strong><small>Working front anchor · provisional<br>Planning notebook · September 2026</small></div></section>
 <div class="scope-note"><span class="dot"></span><p><strong>A comparison tool, with room for uncertainty.</strong> These are planning estimates, not an engineering design, planning approval, grant decision or quotation.</p></div>
@@ -64,6 +80,7 @@
     const form = document.getElementById('privacy-form');
     const field = document.getElementById('privacy-password');
     const status = document.getElementById('privacy-status');
+    const choices = [...document.querySelectorAll('[data-dashboard-route]')];
     const storageKey = 'paulas-place-dashboard-unlocked';
 
     function unlock() {
@@ -75,13 +92,24 @@
       window.dispatchEvent(new Event('resize'));
     }
 
+    function enableChoices() {
+      sessionStorage.setItem(storageKey, 'yes');
+      gate.classList.add('privacy-authenticated');
+      status.textContent = 'Password accepted. Choose a dashboard.';
+      choices.forEach(link => {
+        link.removeAttribute('aria-disabled');
+        link.removeAttribute('tabindex');
+        link.classList.add('is-ready');
+      });
+      choices[0]?.focus();
+    }
+
     if (sessionStorage.getItem(storageKey) === 'yes') unlock();
 
     form.addEventListener('submit', event => {
       event.preventDefault();
       if (field.value === password) {
-        status.textContent = '';
-        unlock();
+        enableChoices();
         return;
       }
       status.textContent = 'That password does not match.';
@@ -90,6 +118,17 @@
       void gate.offsetWidth;
       gate.classList.add('privacy-shake');
     });
+
+    choices.forEach(link => link.addEventListener('click', event => {
+      if (link.getAttribute('aria-disabled') === 'true') {
+        event.preventDefault();
+        return;
+      }
+      if (link.dataset.dashboardRoute === 'complex') {
+        event.preventDefault();
+        unlock();
+      }
+    }));
   })();
 </script>
 </body></html>
